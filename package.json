@@ -10,6 +10,7 @@
   "author": "Emanuel Zini",
   "license": "ISC",
   "devDependencies": {
+    "cy-spok": "^1.5.2",
     "cypress": "^10.8.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
