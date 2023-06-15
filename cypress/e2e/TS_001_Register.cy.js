@@ -2,6 +2,9 @@
 
 const email = Cypress.env('email')
 const password = Cypress.env('password')
+const missingPasswordMessage = 'Missing password'
+const missingPasswordUsernameMessage = 'Missing email or username'
+const noteMessage = 'Note: Only defined users succeed registration'
 
 describe('Register via API', () => {
   context('Succesfully Credentials', () => {
@@ -35,8 +38,8 @@ describe('Register via API', () => {
         failOnStatusCode: false,
       }).then((response) => {
         expect(response.status).to.eq(400)
-        expect(response.body).to.have.property('error', 'Missing password')
-        cy.log('Note: Only defined users succeed registration')
+        expect(response.body).to.have.property('error', missingPasswordMessage)
+        cy.log(noteMessage)
       })
     })
 
@@ -54,9 +57,9 @@ describe('Register via API', () => {
         expect(response.status).to.eq(400)
         expect(response.body).to.have.property(
           'error',
-          'Missing email or username',
+          missingPasswordUsernameMessage,
         )
-        cy.log('Note: Only defined users succeed registration')
+        cy.log(noteMessage)
       })
     })
   })
